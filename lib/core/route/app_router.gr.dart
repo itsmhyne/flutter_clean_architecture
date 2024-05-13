@@ -40,11 +40,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     WelcomeRoute.name: (routeData) {
-      final args = routeData.argsAs<WelcomeRouteArgs>(
-          orElse: () => const WelcomeRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WelcomePage(key: args.key),
+        child: const WelcomePage(),
       );
     },
   };
@@ -108,29 +106,14 @@ class SplashscreenRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [WelcomePage]
-class WelcomeRoute extends PageRouteInfo<WelcomeRouteArgs> {
-  WelcomeRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class WelcomeRoute extends PageRouteInfo<void> {
+  const WelcomeRoute({List<PageRouteInfo>? children})
+      : super(
           WelcomeRoute.name,
-          args: WelcomeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'WelcomeRoute';
 
-  static const PageInfo<WelcomeRouteArgs> page =
-      PageInfo<WelcomeRouteArgs>(name);
-}
-
-class WelcomeRouteArgs {
-  const WelcomeRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'WelcomeRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

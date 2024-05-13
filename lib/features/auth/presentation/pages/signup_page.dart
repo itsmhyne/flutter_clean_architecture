@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/core/constant/size.dart';
 import 'package:flutter_clean_architecture/core/theme/app_pallete.dart';
+import 'package:flutter_clean_architecture/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/widgets/button_icontext.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/widgets/button_text.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/widgets/container_textfield.dart';
@@ -177,7 +179,10 @@ class _SignupPageState extends State<SignupPage> {
                 onTap: () {
                   if (!formKey.currentState!.validate()) return;
                   // --save data
-                  print('saved broo');
+                  context.read<AuthBloc>().add(AuthSignup(
+                      name: usernameController.text,
+                      email: emailController.text,
+                      password: passwordController.text));
                 },
               )
             ],
