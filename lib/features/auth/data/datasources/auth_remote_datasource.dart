@@ -1,4 +1,3 @@
-import 'package:either_dart/either.dart';
 import 'package:flutter_clean_architecture/core/error/exception.dart';
 import 'package:flutter_clean_architecture/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

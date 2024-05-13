@@ -3,7 +3,7 @@ class MhyTextStrings {
 
   // -- Global Text
   static const String appName = 'Clean Architecture';
-  static const String appLogo = 'assets/icon/shopping_bag.svg';
+  static const String appLogo = 'assets/icon/code.svg';
 
   // -- Onboarding Text
   static const String onBoardingTitle1 =

@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/core/constant/text_strings.dart';
 import 'package:flutter_clean_architecture/core/route/app_router.dart';
-import 'package:flutter_clean_architecture/core/secrets/app_secret.dart';
 import 'package:flutter_clean_architecture/core/theme/app_theme.dart';
-import 'package:flutter_clean_architecture/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:flutter_clean_architecture/features/auth/data/reposistories/auth_repository_impl.dart';
-import 'package:flutter_clean_architecture/features/auth/domain/usecase/user_signup.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_clean_architecture/init_dependencies.dart';
 
 void main() async {
   // -- pastikan flutter binding sudah jalan
   WidgetsFlutterBinding.ensureInitialized();
 
-  final supabase = await Supabase.initialize(
-      url: AppSecret.supabaseUrl, anonKey: AppSecret.supabaseAnonKey);
+  await initDependencies();
 
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (context) => AuthBloc(
-            userSignup: UserSignup(
-                AuthRepositoryImpl(AuthRemoteDatasourceImpl(supabase.client)))),
+        create: (context) => serviceLocator<AuthBloc>(),
       ),
     ],
     child: MainApp(),
@@ -36,10 +30,20 @@ class MainApp extends StatelessWidget {
   final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
+    // --atur warna statusbar dan icon
+    Brightness statusBarIconBrightness =
+        Theme.of(context).brightness == Brightness.light
+            ? Brightness.dark
+            : Brightness.light;
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+        statusBarIconBrightness: statusBarIconBrightness));
+
     return MaterialApp.router(
       routerConfig: appRouter.config(),
       title: MhyTextStrings.appName,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: MhyAppTheme.lightTheme,
       darkTheme: MhyAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,

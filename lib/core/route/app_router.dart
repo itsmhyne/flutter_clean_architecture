@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/pages/signin_page.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/pages/signup_page.dart';
 import 'package:flutter_clean_architecture/features/auth/presentation/pages/splashscreen_page.dart';

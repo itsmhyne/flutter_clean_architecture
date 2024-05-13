@@ -38,7 +38,11 @@ class _SigninPageState extends State<SigninPage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.only(
-            top: MhySizes.lg, left: MhySizes.lg, right: MhySizes.lg),
+          // top: MhySizes.lg,
+          left: MhySizes.lg,
+          right: MhySizes.lg,
+          bottom: MhySizes.md,
+        ),
         child: ListView(
           children: [
             Text(
