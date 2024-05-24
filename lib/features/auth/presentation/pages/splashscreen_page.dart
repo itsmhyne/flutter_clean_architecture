@@ -28,12 +28,11 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
   @override
   Widget build(BuildContext context) {
     const spinkit = SpinKitCircle(
-      color: MhyPallete.white,
+      color: MhyPallete.primary,
       size: MhySizes.xl * 1.5,
     );
 
     return Scaffold(
-      backgroundColor: MhyPallete.primary,
       body: Container(
         padding: const EdgeInsets.all(MhySizes.xl * 3),
         width: MediaQuery.of(context).size.width,
@@ -48,8 +47,8 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
                   child: SvgPicture.asset(
                     MhyTextStrings.appLogo,
                     fit: BoxFit.cover,
-                    colorFilter:
-                        const ColorFilter.mode(MhyPallete.white, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(
+                        MhyPallete.primary, BlendMode.srcIn),
                   ),
                 ),
                 const SizedBox(
@@ -59,7 +58,7 @@ class _SplashscreenPageState extends State<SplashscreenPage> {
                   MhyTextStrings.appName,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color: MhyPallete.white,
+                      color: MhyPallete.primary,
                       fontSize: 40),
                 ),
               ],
